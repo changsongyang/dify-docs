@@ -59,6 +59,8 @@ These are principles, not absolute rules. Apply them when they improve clarity; 
 
 **Decision-making information.** Provide applicable scenarios and trade-offs rather than prescribing specific configurations. Users have diverse needs; give them what they need to make informed choices.
 
+**Adjustable parameter guidance.** When documenting parameters users can tune (thresholds, limits, intervals), describe the trade-off direction—not a recommended value. Tell users what happens when they go higher vs. lower so they can decide based on their own context. For example: "Higher thresholds return fewer, more relevant results; lower thresholds include broader matches."
+
 **Genuine insight.** Add the "why" and "how it connects", not just a reorganization of information already visible in the product.
 
 ## Patterns to Avoid
@@ -80,5 +82,7 @@ These are principles, not absolute rules. Apply them when they improve clarity; 
 **Unnecessary second sentences.** When two sentences can be merged into one without losing readability, combine them. If the "how it works" can be folded into the "what it does," a separate sentence is noise. Apply case-by-case—don't sacrifice clarity for brevity.
 
 **Repetitive structures.** Vary sentence patterns across related sections to avoid a mechanical feel.
+
+**Vague cross-references.** Don't link to another page unless the reader gains something by clicking. If the current page already provides sufficient context, the link is noise. When linking, "see X for details" is fine if the surrounding context already makes clear what those details are. Only add a specific description when the context alone doesn't convey what the reader will find—otherwise the description itself becomes redundant.
 
 **Over-simplification.** Don't sacrifice clarity for brevity. Choose precision when a specific term prevents confusion, even if it's longer.

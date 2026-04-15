@@ -175,7 +175,14 @@ These elements must be translated, not left in English:
 - **Frame captions and image alt text:** Translate both `<Frame caption="...">` and `![alt text]`.
 - **Bold UI labels:** When a UI label appears in **bold**, use the official Japanese translation from `web/i18n/ja-JP/`. Refer to the glossary.
 - **Prompt examples:** Translate natural language text inside code blocks (using です/ます form). Keep variable placeholders (`{{variable_name}}`) unchanged.
-- **Cross-reference anchors:** When a link includes `#slug`, update the slug to match the translated text. This applies to both heading anchors and Tab title anchors (Mintlify generates anchors from `<Tab title="...">` values).
+## Cross-Reference Anchors
+
+When a link includes `#slug`, the slug must match the **translated** text, not the English original. Mintlify generates slugs from the source text, so an untranslated anchor will break the link. This applies to both heading anchors and Tab title anchors (`<Tab title="...">` values).
+
+| English source | Japanese translation |
+|:---------------|:---------------------|
+| `external-knowledge-api#response` | `external-knowledge-api#レスポンス` |
+| `setting-indexing-methods#setting-the-retrieval-setting` | `setting-indexing-methods#検索設定の指定` |
 
 ## Em Dashes
 
@@ -188,7 +195,31 @@ Avoid using `—` or `——` in Japanese text. Restructure instead:
 
 ## Translation Quality
 
-Avoid these common issues in EN→JA translation:
+### Translate Meaning, Not Structure
+
+The single most important rule: after understanding what an English sentence says, write the Japanese from scratch as if you were writing it natively. Do not preserve English clause order, modifier chains, or connector words just because they appear in the source. Fidelity to natural Japanese always outranks fidelity to English structure.
+
+Before finalizing any sentence, ask: "Would a Japanese technical writer actually write this?" If the answer is no, rewrite.
+
+### Patterns to Eliminate
+
+These constructions immediately mark output as machine-translated:
+
+| English source | Translationese (avoid) | Natural Japanese |
+|:---------------|:-----------------------|:-----------------|
+| If your team maintains its own RAG system, you can connect... | あなたのチームが独自の RAG システムを維持している場合、接続できます... | 自社で RAG システムを運用している場合、接続できます... |
+| When your application runs, Dify sends... | アプリケーションが実行されるとき、Dify は送信します | アプリケーション実行時、Dify は送信します |
+| You can connect these external sources to Dify | あなたはこれらの外部ソースを Dify に接続することができます | これらの外部ソースを Dify に接続できます |
+| The API service you registered | あなたが登録した API サービス | 登録した API サービス |
+
+Specific patterns to drop or shorten when context allows:
+
+- **Drop redundant 「あなたの／あなたが」 only when ownership is unambiguously clear.** Japanese naturally omits subjects more than English, but keep the possessive when the sentence subject shifts, when the referent could be misread, or when the clause describes an action the reader performs. Over-dropping creates ambiguity.
+- **Drop 「〜することができます」.** Use `〜できます` directly. The longer form is verbose and translationese.
+- **Drop 「〜とき／〜場合」 wrappers** around simple time clauses when 「〜時」 suffix or noun-form works. `実行時` is cleaner than `実行されるとき`.
+- **Avoid stacked 「の」.** 「あなたのチームのRAGシステムの設定」 reads as MT; restructure into shorter phrases.
+
+### Other Quality Issues
 
 - **Missing CJK-Latin spaces.** The most visible quality signal. Missing spaces immediately mark output as machine-translated.
 - **Literal English syntax.** Restructure English relative clauses and long modifier chains into natural Japanese clause order.
